@@ -203,6 +203,8 @@
           </div>
         </div>
 
+        {{!-- add skills life link to work --}}
+
         {{#unless @root.request.params.query.slp}}
           {{#ifAll (ifAny (compare @root.data.currentSite.name "digital") (compare @root.data.currentSite.name "digital-legacy")) (compare (default @root.request.params.query.area @root.data.rootResponse.area) "scotland") ~}}
             <div class="v-padding-full">

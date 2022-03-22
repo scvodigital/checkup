@@ -15,8 +15,9 @@ global class SaveCheckupSessionTests {
         	'"postcode": "EH6 4AD",',
         	'"responseId": "test-response-id",',
         	'"sharingId": "test-sharing-id",',
-        	'"localAuthority": "Edinburgh, City of",',
+          '"localAuthority": "Edinburgh, City of",',
         	'"estimatedAnnualTurnover": "<100000",',
+          '"referredBy": "",',
         	'"wantsSupport": true,',
         	'"wantsReminder": false,',
             '"metricResponses": [',
@@ -56,7 +57,8 @@ global class SaveCheckupSessionTests {
         	'"sharingId": "test-sharing-id",',
         	'"localAuthority": "Edinburgh, City of",',
         	'"estimatedAnnualTurnover": "<100000",',
-        	'"wantsSupport": true,',
+          '"referredBy": "",',
+          '"wantsSupport": true,',
         	'"wantsReminder": false,',
             '"metricResponses": [',
             '{ "metric": "metric_1", "percentageScore": 0.45 }',
@@ -92,7 +94,8 @@ global class SaveCheckupSessionTests {
         	'"responseId": "test-response-id",',
         	'"sharingId": "test-sharing-id",',
         	'"localAuthority": "Edinburgh, City of",',
-        	'"estimatedAnnualTurnover": "<100000",',
+          '"estimatedAnnualTurnover": "<100000",',
+          '"referredBy": "",',
         	'"wantsSupport": true,',
         	'"wantsReminder": false,',
             '"metricResponses": [',
@@ -134,7 +137,8 @@ global class SaveCheckupSessionTests {
         	'"responseId": "test-response-id",',
         	'"sharingId": "test-sharing-id",',
         	'"localAuthority": "Edinburgh, City of",',
-        	'"estimatedAnnualTurnover": "<100000",',
+          '"estimatedAnnualTurnover": "<100000",',
+          '"referredBy": "",',
         	'"wantsSupport": true,',
         	'"wantsReminder": false,',
             '"metricResponses": [',
@@ -164,7 +168,8 @@ global class SaveCheckupSessionTests {
         	'"responseId": "test-response-id",',
         	'"sharingId": "test-sharing-id",',
         	'"localAuthority": "Edinburgh, City of",',
-        	'"estimatedAnnualTurnover": "<100000",',
+          '"estimatedAnnualTurnover": "<100000",',
+          '"referredBy": "",',
         	'"wantsSupport": true,',
         	'"wantsReminder": false,',
             '"metricResponses": [',
@@ -194,7 +199,8 @@ global class SaveCheckupSessionTests {
         	'"responseId": "test-response-id",',
         	'"sharingId": "test-sharing-id",',
         	'"localAuthority": "Edinburgh, City of",',
-        	'"estimatedAnnualTurnover": "<100000",',
+          '"estimatedAnnualTurnover": "<100000",',
+          '"referredBy": "",',
         	'"wantsSupport": true,',
         	'"wantsReminder": false,',
             '"metricResponses": [],',
@@ -220,7 +226,8 @@ global class SaveCheckupSessionTests {
         	'"responseId": "test-response-id",',
         	'"sharingId": "test-sharing-id",',
         	'"localAuthority": "Edinburgh, City of",',
-        	'"estimatedAnnualTurnover": "<100000",',
+          '"estimatedAnnualTurnover": "<100000",',
+          '"referredBy": "",',
         	'"wantsSupport": true,',
         	'"wantsReminder": false,',
             '"metricResponses": [ { "question": "I question", "percentageScore": 0.45 } ],',
@@ -245,7 +252,8 @@ global class SaveCheckupSessionTests {
         	'"responseId": "test-response-id",',
         	'"sharingId": "test-sharing-id",',
         	'"localAuthority": "Edinburgh, City of",',
-        	'"estimatedAnnualTurnover": "<100000",',
+          '"estimatedAnnualTurnover": "<100000",',
+          '"referredBy": "",',
         	'"wantsSupport": true,',
         	'"wantsReminder": false,',
             '"metricResponses": [ { "percentageScore": 0.45 } ],',
@@ -272,6 +280,7 @@ global class SaveCheckupSessionTests {
         checkupSessionNew.responseId = 'test-response-id-new';
         checkupSessionNew.localAuthority = 'Edinburgh, City of';
         checkupSessionNew.estimatedAnnualTurnover = '<100000';
+        checkupSessionNew.referredBy = '';
         checkupSessionNew.wantsSupport = true;
         checkupSessionNew.wantsReminder = false;
         checkupSessionNew.metricResponses = new List<SaveCheckupSession.MetricResponse>();
@@ -299,6 +308,7 @@ global class SaveCheckupSessionTests {
         checkupSessionExisting.responseId = checkupSessionNew.responseId;
         checkupSessionExisting.localAuthority = checkupSessionNew.localAuthority;
         checkupSessionExisting.estimatedAnnualTurnover = checkupSessionNew.estimatedAnnualTurnover;
+        checkupSessionExisting.referredBy = checkupSessionNew.referredBy;
         checkupSessionExisting.wantsSupport = checkupSessionNew.wantsSupport;
         /// Going to flip this value to test it updates
         checkupSessionExisting.wantsReminder = !checkupSessionNew.wantsReminder;
@@ -330,6 +340,7 @@ global class SaveCheckupSessionTests {
         checkupSessionNew.responseId = 'test-response-id-new';
         checkupSessionNew.localAuthority = 'Edinburgh, City of';
         checkupSessionNew.estimatedAnnualTurnover = '<100000';
+        checkupSessionNew.referredBy = '';
         checkupSessionNew.metricResponses = new List<SaveCheckupSession.MetricResponse>();
         checkupSessionNew.questionResponses = new List<SaveCheckupSession.QuestionResponse>();
 
@@ -350,6 +361,7 @@ global class SaveCheckupSessionTests {
         checkupSessionExisting.responseId = checkupSessionNew.responseId;
         checkupSessionExisting.localAuthority = checkupSessionNew.localAuthority;
         checkupSessionExisting.estimatedAnnualTurnover = checkupSessionNew.estimatedAnnualTurnover;
+        checkupSessionExisting.referredBy = checkupSessionNew.referredBy;
         checkupSessionExisting.metricResponses = checkupSessionNew.metricResponses;
         checkupSessionExisting.questionResponses = checkupSessionNew.questionResponses;
 

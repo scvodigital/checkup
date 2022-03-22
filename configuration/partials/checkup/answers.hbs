@@ -12,3 +12,6 @@
 {{#ifAny @root.request.params.query.slp @root.request.body.slp}}
 <input type="hidden" name="slp" value="true" />
 {{/ifAny}}
+{{#ifAny @root.request.params.query.utm_campaign @root.request.body.referredby}}
+<input type="hidden" name="referredby" value="{{default @root.request.params.query.utm_campaign @root.request.body.referredby}}" />
+{{/ifAny}}

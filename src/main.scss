@@ -39,13 +39,13 @@ $yellow-color: #F9DA18;
 $pink-color: #F78E8B;
 $orange-color: #FAB857;
 
-$goodmoves-legacy-color: rgb(68, 133, 50);
-$goodmoves-color: #537F2C;
+$goodmoves-color: #B6497D;
+$gathering-color: #a2195b;
 $tfn-legacy-color: #3b9db1;
 $tfn-color: #22E5EB;
 $tfn-color-alt: #00A2BC;
 $fs-legacy-color: #537F2C;
-$fs-color: #537F2C;
+$fs-color: #5ba855;
 
 $gray-color: #D5D8DC;
 $gray-color-light: #F0F1F2;
@@ -216,14 +216,16 @@ footer.mdc-layout__footer {
     background-color: $primary-color;
     color: white;
   }
-  .brand-fundingscotland .text-link.active,
   .brand-fundingscotland .text-link:hover {
     background-color: $fs-color;
     color: white;
   }
-  .brand-goodmoves .text-link.active,
   .brand-goodmoves .text-link:hover {
     background-color: $goodmoves-color;
+    color: white;
+  }
+  .brand-gathering .text-link:hover {
+    background-color: $gathering-color;
     color: white;
   }
   .brand-tfn .text-link:hover {

@@ -20,7 +20,6 @@ global with sharing class SaveCheckupSession {
         public String sharingId;
         public String localAuthority;
         public String estimatedAnnualTurnover;
-        public String referredBy;
         public Boolean wantsSupport;
         public Boolean wantsReminder;
         public List<QuestionResponse> questionResponses;
@@ -341,7 +340,6 @@ global with sharing class SaveCheckupSession {
                 Email__c = checkupSession.email,
                 Local_Authority__c = checkupSession.localAuthority,
                 Estimated_Annual_Turnover__c = checkupSession.estimatedAnnualTurnover,
-                Referred_by__c = checkupSession.referredBy,
                 Web_Contact_Name__c = checkupSession.contactName,
                 Web_Postcode__c = checkupSession.postcode,
                 Web_Organisation__c = checkupSession.organisation,
@@ -373,7 +371,6 @@ global with sharing class SaveCheckupSession {
             checkup = existingCheckups[0];
             checkup.Local_Authority__c = checkupSession.localAuthority;
             checkup.Estimated_Annual_Turnover__c = checkupSession.estimatedAnnualTurnover;
-            checkup.Referred_by__c = checkupSession.referredBy;
             checkup.Web_Contact_Name__c = checkupSession.contactName;
             checkup.Web_Postcode__c = checkupSession.postcode;
             checkup.Web_Organisation__c = checkupSession.organisation;

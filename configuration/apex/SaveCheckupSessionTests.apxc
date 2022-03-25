@@ -17,6 +17,7 @@ global class SaveCheckupSessionTests {
         	'"sharingId": "test-sharing-id",',
         	'"localAuthority": "Edinburgh, City of",',
         	'"estimatedAnnualTurnover": "<100000",',
+            '"referredBy": "",',
         	'"wantsSupport": true,',
         	'"wantsReminder": false,',
             '"metricResponses": [',
@@ -40,6 +41,7 @@ global class SaveCheckupSessionTests {
         System.assert(restResponse.success);
     }
 
+
     static testMethod void saveCheckupSessionInvalidTest() {
         RestRequest request = new RestRequest();
 
@@ -56,6 +58,7 @@ global class SaveCheckupSessionTests {
         	'"sharingId": "test-sharing-id",',
         	'"localAuthority": "Edinburgh, City of",',
         	'"estimatedAnnualTurnover": "<100000",',
+            '"referredBy": "",',
         	'"wantsSupport": true,',
         	'"wantsReminder": false,',
             '"metricResponses": [',
@@ -93,6 +96,7 @@ global class SaveCheckupSessionTests {
         	'"sharingId": "test-sharing-id",',
         	'"localAuthority": "Edinburgh, City of",',
         	'"estimatedAnnualTurnover": "<100000",',
+            '"referredBy": "",',
         	'"wantsSupport": true,',
         	'"wantsReminder": false,',
             '"metricResponses": [',
@@ -135,6 +139,7 @@ global class SaveCheckupSessionTests {
         	'"sharingId": "test-sharing-id",',
         	'"localAuthority": "Edinburgh, City of",',
         	'"estimatedAnnualTurnover": "<100000",',
+            '"referredBy": "",',
         	'"wantsSupport": true,',
         	'"wantsReminder": false,',
             '"metricResponses": [',
@@ -165,6 +170,7 @@ global class SaveCheckupSessionTests {
         	'"sharingId": "test-sharing-id",',
         	'"localAuthority": "Edinburgh, City of",',
         	'"estimatedAnnualTurnover": "<100000",',
+            '"referredBy": "",',
         	'"wantsSupport": true,',
         	'"wantsReminder": false,',
             '"metricResponses": [',
@@ -195,6 +201,7 @@ global class SaveCheckupSessionTests {
         	'"sharingId": "test-sharing-id",',
         	'"localAuthority": "Edinburgh, City of",',
         	'"estimatedAnnualTurnover": "<100000",',
+            '"referredBy": "",',
         	'"wantsSupport": true,',
         	'"wantsReminder": false,',
             '"metricResponses": [],',
@@ -221,6 +228,7 @@ global class SaveCheckupSessionTests {
         	'"sharingId": "test-sharing-id",',
         	'"localAuthority": "Edinburgh, City of",',
         	'"estimatedAnnualTurnover": "<100000",',
+            '"referredBy": "",',
         	'"wantsSupport": true,',
         	'"wantsReminder": false,',
             '"metricResponses": [ { "question": "I question", "percentageScore": 0.45 } ],',
@@ -246,6 +254,7 @@ global class SaveCheckupSessionTests {
         	'"sharingId": "test-sharing-id",',
         	'"localAuthority": "Edinburgh, City of",',
         	'"estimatedAnnualTurnover": "<100000",',
+            '"referredBy": "",',
         	'"wantsSupport": true,',
         	'"wantsReminder": false,',
             '"metricResponses": [ { "percentageScore": 0.45 } ],',
@@ -272,6 +281,7 @@ global class SaveCheckupSessionTests {
         checkupSessionNew.responseId = 'test-response-id-new';
         checkupSessionNew.localAuthority = 'Edinburgh, City of';
         checkupSessionNew.estimatedAnnualTurnover = '<100000';
+        checkupSessionNew.referredBy = '';
         checkupSessionNew.wantsSupport = true;
         checkupSessionNew.wantsReminder = false;
         checkupSessionNew.metricResponses = new List<SaveCheckupSession.MetricResponse>();
@@ -281,13 +291,14 @@ global class SaveCheckupSessionTests {
         Checkup__c checkupNew = SaveCheckupSession.saveCheckupSessionCheckup(checkupSessionNew);
 
         // See if we can find our newly created checkup by its Response_Id__c
-        Checkup__c testCheckupNew = [SELECT Id, Web_Contact_Name__c, Web_Organisation__c, Response_Id__c FROM Checkup__c WHERE Response_Id__c = :checkupSessionNew.responseId];
+        Checkup__c testCheckupNew = [SELECT Id, Web_Contact_Name__c, Web_Organisation__c, Response_Id__c, Email__c FROM Checkup__c WHERE Response_Id__c = :checkupSessionNew.responseId];
 
         // Do some assertin'
         System.assertEquals(checkupNew.Id, testCheckupNew.Id);
         System.assertEquals(checkupSessionNew.contactName, testCheckupNew.Web_Contact_Name__c);
         System.assertEquals(checkupSessionNew.organisation, testCheckupNew.Web_Organisation__c);
         System.assertEquals(checkupSessionNew.responseId, testCheckupNew.Response_Id__c);
+        System.assertEquals(checkupSessionNew.email, testCheckupNew.Email__c);
 
         // Now create a new CheckupSession that shares it's responseId with our first one
         SaveCheckupSession.CheckupSession checkupSessionExisting = new SaveCheckupSession.CheckupSession();
@@ -299,6 +310,7 @@ global class SaveCheckupSessionTests {
         checkupSessionExisting.responseId = checkupSessionNew.responseId;
         checkupSessionExisting.localAuthority = checkupSessionNew.localAuthority;
         checkupSessionExisting.estimatedAnnualTurnover = checkupSessionNew.estimatedAnnualTurnover;
+        checkupSessionExisting.referredBy = checkupSessionNew.referredBy;
         checkupSessionExisting.wantsSupport = checkupSessionNew.wantsSupport;
         /// Going to flip this value to test it updates
         checkupSessionExisting.wantsReminder = !checkupSessionNew.wantsReminder;
@@ -309,7 +321,7 @@ global class SaveCheckupSessionTests {
         Checkup__c checkupExisting = SaveCheckupSession.saveCheckupSessionCheckup(checkupSessionExisting);
 
         // See if we can find our newly created checkup by its Response_Id__c
-        Checkup__c testCheckupExisting = [SELECT Id, Web_Contact_Name__c, Web_Organisation__c, Response_Id__c, Wants_Reminder__c FROM Checkup__c WHERE Response_Id__c = :checkupSessionExisting.responseId];
+        Checkup__c testCheckupExisting = [SELECT Id, Web_Contact_Name__c, Web_Organisation__c, Response_Id__c, Wants_Reminder__c, Email__c FROM Checkup__c WHERE Response_Id__c = :checkupSessionExisting.responseId];
 
         // Do some more assertin'
         System.assertEquals(checkupExisting.Id, testCheckupExisting.Id);
@@ -317,6 +329,7 @@ global class SaveCheckupSessionTests {
         System.assertEquals(checkupSessionExisting.organisation, testCheckupExisting.Web_Organisation__c);
         System.assertEquals(checkupSessionExisting.responseId, testCheckupExisting.Response_Id__c);
         System.assertEquals(checkupSessionExisting.wantsReminder, testCheckupExisting.Wants_Reminder__c);
+        System.assertEquals(checkupSessionExisting.email, testCheckupExisting.Email__c);
     }
 
     static testMethod void testSaveCheckupSessionCheckupNewAndExistingWithDefaultWants() {
@@ -330,6 +343,7 @@ global class SaveCheckupSessionTests {
         checkupSessionNew.responseId = 'test-response-id-new';
         checkupSessionNew.localAuthority = 'Edinburgh, City of';
         checkupSessionNew.estimatedAnnualTurnover = '<100000';
+        checkupSessionNew.referredBy = '';
         checkupSessionNew.metricResponses = new List<SaveCheckupSession.MetricResponse>();
         checkupSessionNew.questionResponses = new List<SaveCheckupSession.QuestionResponse>();
 
@@ -350,6 +364,7 @@ global class SaveCheckupSessionTests {
         checkupSessionExisting.responseId = checkupSessionNew.responseId;
         checkupSessionExisting.localAuthority = checkupSessionNew.localAuthority;
         checkupSessionExisting.estimatedAnnualTurnover = checkupSessionNew.estimatedAnnualTurnover;
+        checkupSessionExisting.referredBy = checkupSessionNew.referredBy;
         checkupSessionExisting.metricResponses = checkupSessionNew.metricResponses;
         checkupSessionExisting.questionResponses = checkupSessionNew.questionResponses;
 
@@ -360,6 +375,67 @@ global class SaveCheckupSessionTests {
         System.assertEquals(false, checkupExisting.Wants_Support__c, 'Existing default Wants_Support__c');
         System.assertEquals(false, checkupExisting.Wants_Reminder__c, 'Existing default Wants_Reminder__c');
     }
+
+        static testMethod void testSaveCheckupSessionCheckupWithLaterRelatedCheckup() {
+        // Create a CheckupSession that is new (its responseId doesn't exist in a Checkup__c)
+        SaveCheckupSession.CheckupSession checkupSessionNew = new SaveCheckupSession.CheckupSession();
+        checkupSessionNew.recordType = 'Digital';
+        checkupSessionNew.contactName = 'Test Contact';
+        checkupSessionNew.email = 'test.contact@organisation.org';
+        checkupSessionNew.organisation = 'Test Organisation';
+        checkupSessionNew.postcode = 'EH6 4AD';
+        checkupSessionNew.responseId = 'test-original-response-id';
+        checkupSessionNew.localAuthority = 'Edinburgh, City of';
+        checkupSessionNew.estimatedAnnualTurnover = '<100000';
+        checkupSessionNew.referredBy = '';
+        checkupSessionNew.metricResponses = new List<SaveCheckupSession.MetricResponse>();
+        checkupSessionNew.questionResponses = new List<SaveCheckupSession.QuestionResponse>();
+
+        // Get the (hopefully) newly created and saved Checkup__c of our CheckupSession
+        Checkup__c checkupNew = SaveCheckupSession.saveCheckupSessionCheckup(checkupSessionNew);
+
+        // Now create a new CheckupSession that has a sharingId which matches our first one
+        SaveCheckupSession.CheckupSession checkupSessionShared = new SaveCheckupSession.CheckupSession();
+        checkupSessionShared.recordType = checkupSessionNew.recordType;
+        checkupSessionShared.contactName = 'Test Contact Colleague';
+        checkupSessionShared.email = 'test.contacts.colleague@organisation.org';
+        checkupSessionShared.organisation = checkupSessionNew.organisation;
+        checkupSessionShared.postcode = checkupSessionNew.postcode;
+        checkupSessionShared.responseId = 'test-new-response-id'; // New response ID
+		checkupSessionShared.sharingId = checkupSessionNew.responseId; // Original post's response ID as sharing Id
+        checkupSessionShared.localAuthority = checkupSessionNew.localAuthority;
+        checkupSessionShared.estimatedAnnualTurnover = checkupSessionNew.estimatedAnnualTurnover;
+        checkupSessionShared.referredBy = checkupSessionNew.referredBy;
+        checkupSessionShared.metricResponses = checkupSessionNew.metricResponses;
+        checkupSessionShared.questionResponses = checkupSessionNew.questionResponses;
+
+            // Get the (hopefully) newly created and saved Checkup__c of our new CheckupSession
+        Checkup__c checkupShared = SaveCheckupSession.saveCheckupSessionCheckup(checkupSessionShared);
+
+        // Do some assertin'
+        System.assert(checkupShared.Original_Sharer_Email__c == 'test.contact@organisation.org');
+        System.assert(checkupShared.Original_Checkup__c == checkupNew.Id);
+
+        // Now create a new CheckupSession that has a sharingId which matches our nothing
+        SaveCheckupSession.CheckupSession checkupSessionSharedBad = new SaveCheckupSession.CheckupSession();
+        checkupSessionSharedBad.recordType = checkupSessionNew.recordType;
+        checkupSessionSharedBad.contactName = 'Test Contact Colleague';
+        checkupSessionSharedBad.email = 'test.contacts.colleague@organisation.org';
+        checkupSessionSharedBad.organisation = checkupSessionNew.organisation;
+        checkupSessionSharedBad.postcode = checkupSessionNew.postcode;
+        checkupSessionSharedBad.responseId = 'bad-checkup-session';
+		checkupSessionSharedBad.sharingId = 'nacho-cheese'; // Nonsense sharing id.
+        checkupSessionSharedBad.localAuthority = checkupSessionNew.localAuthority;
+        checkupSessionSharedBad.estimatedAnnualTurnover = checkupSessionNew.estimatedAnnualTurnover;
+        checkupSessionSharedBad.referredBy = checkupSessionNew.referredBy;
+        checkupSessionSharedBad.metricResponses = checkupSessionNew.metricResponses;
+        checkupSessionSharedBad.questionResponses = checkupSessionNew.questionResponses;
+
+        // Get the (hopefully) newly created and saved Checkup__c of our new CheckupSession
+        Checkup__c checkupSharedBad = SaveCheckupSession.saveCheckupSessionCheckup(checkupSessionSharedBad);
+
+        }
+
 
     static testMethod void testSaveCheckupSessionResponses() {
         Id metricRecordTypeId = Schema.SObjectType.Checkup_Session_Response__c.getRecordTypeInfosByDeveloperName().get('Metric_Response').getRecordTypeId();

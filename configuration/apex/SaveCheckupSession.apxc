@@ -20,6 +20,8 @@ global with sharing class SaveCheckupSession {
         public String sharingId;
         public String localAuthority;
         public String estimatedAnnualTurnover;
+        public String referredBy;
+        public String jobTitle;
         public Boolean wantsSupport;
         public Boolean wantsReminder;
         public List<QuestionResponse> questionResponses;
@@ -320,8 +322,8 @@ global with sharing class SaveCheckupSession {
             Email__c, Latest_Session_Time__c,
             Local_Authority__c, Estimated_Annual_Turnover__c,
             Wants_Support__c, Wants_Reminder__c, Web_Contact_Name__c,
-            Web_Organisation__c, Web_Postcode__c, Sharing_ID__c,
-            Response_ID__c, RecordTypeId, RecordType.Name, Status__c
+            Web_Organisation__c, Web_Postcode__c, Web_Contact_Job_Title__c,
+            Sharing_ID__c, Response_ID__c, RecordTypeId, RecordType.Name, Status__c
             FROM Checkup__c
             WHERE Response_Id__c = :checkupSession.responseId
         ];
@@ -340,12 +342,15 @@ global with sharing class SaveCheckupSession {
                 Email__c = checkupSession.email,
                 Local_Authority__c = checkupSession.localAuthority,
                 Estimated_Annual_Turnover__c = checkupSession.estimatedAnnualTurnover,
+                Referred_by__c = checkupSession.referredBy,
                 Web_Contact_Name__c = checkupSession.contactName,
                 Web_Postcode__c = checkupSession.postcode,
                 Web_Organisation__c = checkupSession.organisation,
+                Web_Contact_Job_Title__c = checkupSession.jobTitle,
                 Response_ID__c = checkupSession.responseId,
                 Sharing_ID__c = checkupSession.sharingId,
                 RecordTypeId = checkupSession.recordTypeId,
+                Status__c = 'New',
                 Latest_Session_Time__c = latestSessionTime
             );
 
@@ -361,6 +366,16 @@ global with sharing class SaveCheckupSession {
                 checkup.Wants_Reminder__c = checkupSession.wantsReminder;
             }
 
+             if (checkupSession.sharingId != '' && checkupSession.sharingId != NULL &&  checkupSession.sharingId != checkupSession.responseId){
+                List<Checkup__c> originalCheckup = [
+                    SELECT Id, Email__c, Response_ID__c FROM Checkup__c WHERE Response_ID__c =: checkupSession.sharingId
+                ];
+
+                if (originalCheckup != NULL && originalCheckup.size() == 1){
+                    checkup.Original_Checkup__c = originalCheckup[0].Id;
+                    checkup.Original_Sharer_Email__c = originalCheckup[0].Email__c;
+                }
+             }
             // Then insert it
             insert checkup;
         } else {
@@ -371,10 +386,11 @@ global with sharing class SaveCheckupSession {
             checkup = existingCheckups[0];
             checkup.Local_Authority__c = checkupSession.localAuthority;
             checkup.Estimated_Annual_Turnover__c = checkupSession.estimatedAnnualTurnover;
+            checkup.Referred_by__c = checkupSession.referredBy;
             checkup.Web_Contact_Name__c = checkupSession.contactName;
             checkup.Web_Postcode__c = checkupSession.postcode;
             checkup.Web_Organisation__c = checkupSession.organisation;
-            checkup.Status__c = 'New';
+            checkup.Web_Contact_Job_Title__c = checkupSession.jobTitle;
             checkup.Latest_Session_Time__c = latestSessionTime;
 
             if (checkupSession.wantsSupport != null) {

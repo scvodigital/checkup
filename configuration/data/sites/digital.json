@@ -110,7 +110,7 @@
   "for_plural": "organisations",
   "email": "digital@scvo.scot",
   "phone": "0800 169 0022",
-  "url": "https://organisation.checkup.scot",
+  "url": "https://digital.checkup.scot",
   "checkups": {
     "checkup": {
       "sf_type": "Digital_Organisations",

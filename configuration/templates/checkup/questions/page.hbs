@@ -1,8 +1,4 @@
-{{#compare @root.data.currentSite.name 'housing'}}
-  <div class="container-fluid" style="padding-top:3rem;">
-    <p>This function has been taken down for maintenance. It should be fixed soon.</p>
-  </div>
-{{else}}
+
 
 {{#ifAny @root.request.params.query.slp @root.request.body.slp}}
   <div class="container-fluid" style="margin-top:3rem;">
@@ -34,4 +30,3 @@
   {{> checkup_section section="section-1"}}
 {{/if ~}}
 
-{{/compare}}

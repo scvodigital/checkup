@@ -34,6 +34,7 @@
     {
       "title": "Leadership, culture, and skills",
       "class": "leadership",
+      "description": "Does your team have the right mindset and skills to make the most of digital?",
       "number": 1,
       "shape": "icon",
       "color": "purple",
@@ -42,6 +43,7 @@
     {
       "title": "Tools and equipment",
       "class": "tools",
+      "description": "Which platforms and tools are you using at the moment?",
       "number": 2,
       "shape": "icon",
       "color": "pink",
@@ -50,6 +52,7 @@
     {
       "title": "Content, marketing and data",
       "class": "content",
+      "description": "Are you making good use of data in your organisation?",
       "number": 3,
       "shape": "icon",
       "color": "green",
@@ -58,6 +61,7 @@
     {
       "title": "Cyber resilience and online threats",
       "class": "cyber",
+      "description": "What steps are you taking to keep your systems secure?",
       "number": 4,
       "shape": "icon",
       "color": "orange",
@@ -119,10 +123,11 @@
           "number": 1,
           "name": "Section 1",
           "title": "Leadership, culture, & skills",
-          "description": "Digital isn't a list of things to do. It's about how you think, how you behave, what you value, and what drives decisions in your organisation",
+          "description": "This first section is about your team’s culture and leadership. To make good use of digital, you need positive leadership and an enabling team culture.",
           "icon": "fa-compass",
           "color": "purple",
           "progress": 12,
+          "page": 1,
           "questions": [
             {
               "title": "How well do you understand the digital skills of your staff and/or volunteers? *",
@@ -219,10 +224,11 @@
           "number": 2,
           "name": "Section 2",
           "title": "Tools & equipment",
-          "description": "Which digital tools are your charity making use of? With a host of online tools and platforms out there, it's never been easier to try new solutions",
+          "description": "This section covers the digital tools and platforms you are using in your organisation. With a host of online tools and platforms out there, it's never been easier to try new solutions.",
           "icon": "fa-briefcase",
           "color": "pink",
           "progress": 25,
+          "page": 2,
           "questions": [
             {
               "title": "How often does your organisation use the following technologies?",
@@ -318,10 +324,11 @@
           "number": 3,
           "name": "Section 3",
           "title": "Content & Marketing",
-          "description": "Digital tools and approaches make it dramatically easier to reach thousands of people, and more importantly, to hear about their needs and priorities",
+          "description": "This section is about how you use digital tools and approaches to help you understand and engage with the people you work with, and your supporters.",
           "icon": "fa-bullseye-arrow fa-rotate-180",
           "color": "green",
           "progress": 37,
+          "page": 3,
           "questions": [
             {
               "title": "Which of the following approaches do you use to understand the needs of your users in developing or improving your services? (Tick all that apply)",
@@ -429,10 +436,11 @@
         "section-4": {
           "name": "Section 4",
           "title": "Data management",
-          "description": "Using digital tools means charities can access large amounts of real-time data. But you need a strategic approach to make the most of it",
+          "description": "This section covers the ways you are using data within your organisation, including what data you are collecting, and how you are storing it.",
           "icon": "fa-bullseye-arrow fa-rotate-180",
           "color": "green",
           "progress": 50,
+          "page": 4,
           "questions": [
             {
               "title": "Data collection *",
@@ -540,10 +548,11 @@
         "section-5": {
           "name": "Section 5",
           "title": "Cyber resilience & online threats",
-          "description": "Putting more information online, and digitising transactions can mean you are more vulnerable to cyber attack. So cyber resilience is more important than ever",
+          "description": "Cyber resilience is about the steps you are taking to ensure that your digital systems and data stay secure. As we use more and more online tools, cyber resilience is becoming more and more important.",
           "icon": "fa-shield-check",
           "color": "orange",
           "progress": 62,
+          "page": 5,
           "questions": [
             {
               "title": "Which statement best describes your organisation's approach to Cyber Security? *",
@@ -679,6 +688,7 @@
           "title": "Your organisation size and priorities",
           "icon": "fa-chart-network",
           "progress": 75,
+          "page": 6,
           "questions": [
             {
               "description": "This information enables us to compare your results to {{@root.data.currentSite.for_plural}} of a similar size. If you prefer not to submit this information, you result will be compared to the average of all {{@root.data.currentSite.for_plural}} who have completed the checkup",

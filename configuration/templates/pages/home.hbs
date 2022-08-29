@@ -11,7 +11,7 @@
   <div class="container-fluid container-home">
     <div class="container-home v-padding-full v-margin-full">
       <div class="mdc-typography--body2 t-margin-full">
-        Take our simple Digital checkup to assess your current digital maturity and how this compares to other {{@root.data.currentSite.for_plural}}
+        Take our simple Digital checkup to assess your current digital maturity and how this compares to other {{@root.data.currentSite.for_plural}}. The checkup will take about 10 minutes to complete, and you will see your result straight away. You’ll get a link so you can share it with your team, too. You can book a free support call to review your result and help you plan your next steps.
       </div>
       <div class="cta t-padding-full t-margin-full">
         <a href="/checkup" class="btn btn-outline">Start the checkup</a>
@@ -186,7 +186,7 @@
       <div class="mdc-layout-grid v-padding-full">
         <div class="mdc-layout-grid__inner">
           {{#each @root.data.currentSite.sections}}
-            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-{{#compare @root.data.currentSite.name 'organisation'}}6{{else}}{{#ifAny (compare @root.data.currentSite.name 'skills') (compare @root.data.currentSite.name 'cyber') (compare @root.data.currentSite.name 'governance')}}12{{else}}3{{/ifAny}}{{/compare}}-desktop mdc-layout-grid__cell--span-{{#ifAny (compare @root.data.currentSite.name 'skills') (compare @root.data.currentSite.name 'cyber') (compare @root.data.currentSite.name 'governance')}}8{{else}}4{{/ifAny}}-tablet mdc-layout-grid__cell--span-4-phone v-margin-full text-center">
+            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-{{#compare @root.data.currentSite.name 'digital'}}12{{else}}{{#ifAny (compare @root.data.currentSite.name 'skills') (compare @root.data.currentSite.name 'cyber') (compare @root.data.currentSite.name 'governance')}}12{{else}}3{{/ifAny}}{{/compare}}-desktop mdc-layout-grid__cell--span-{{#ifAny (compare @root.data.currentSite.name 'skills') (compare @root.data.currentSite.name 'cyber') (compare @root.data.currentSite.name 'governance')}}8{{else}}4{{/ifAny}}-tablet mdc-layout-grid__cell--span-4-phone v-margin-full text-center">
               {{!-- {{#if number}}
                 <div class="number" style="background-color:#{{color}};">{{number}}</div>
               {{/if}} --}}

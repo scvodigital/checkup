@@ -25,9 +25,6 @@
                 {{#if title ~}}
                 <h1 class="mdc-typography--headline3">{{{title}}}</h1>
                 {{/if ~}}
-                {{#if description ~}}
-                <div class="mdc-typography--body1">{{{description}}}</div>
-                {{/if ~}}
               </div>
             </div>
           </div>
@@ -38,10 +35,13 @@
   <div class="bg-gray-light b-padding-full">
     <div class="container-fluid">
       {{#if progress ~}}
-      {{> checkup_progress progress=progress}}
+        {{> checkup_progress progress=progress page=page}}
       {{/if ~}}
       <div class="container-content v-padding-full">
-        <div class="mdc-typography--body2">
+        {{#if description ~}}
+          <div class="mdc-typography--body1 b-margin-full">{{{description}}}</div>
+        {{/if ~}}
+        <div class="mdc-typography--body2 t-padding">
           * required information
         </div>
         {{#each questions ~}}

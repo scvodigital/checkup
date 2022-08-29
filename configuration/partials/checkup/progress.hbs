@@ -18,10 +18,14 @@
     {{/unless}}
   </div>
   <div class="container-content progress-label-text{{#compare progress 100}} text-center{{/compare}} t-margin">
-    {{#compare progress "<" 100 ~}}
-    {{progress}}% complete
+    {{#if page}}
+      Page {{page}} of 8
     {{else}}
-    Checkup complete
-    {{/compare ~}}
+      {{#compare progress "<" 100 ~}}
+        {{progress}}% complete
+      {{else}}
+        Checkup complete
+      {{/compare ~}}
+    {{/if}}
   </div>
 </div>

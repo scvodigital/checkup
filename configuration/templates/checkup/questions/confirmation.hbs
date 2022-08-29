@@ -19,11 +19,38 @@
   </div>
   <div class="container-fluid">
     <div class="container-content">
-      {{> checkup_progress progress=95}}
+      {{> checkup_progress progress=95 page=8}}
 
       <div class="mdc-typography--body2">
         * required information
       </div>
+
+      {{#compare @root.data.currentSite.name "housing" ~}}
+        <div class="question-block">
+          <div class="question">
+            <h2 class="mdc-typography--headline5 question-title">Due to COVID19 situation – has it made your organisation digitally transform / change the way it performs a specific service or operation / consider changing the way your staff work?</h2>
+          </div>
+          <div class="answer-block">
+            <div class="mdc-text-field mdc-text-field--textarea mdc-text-field--fullwidth" data-mdc-auto-init="MDCTextField">
+              <textarea id="covid19" name="answers-covid19" class="mdc-text-field__input" rows="10" placeholder="Please enter a description" maxlength="32767"></textarea>
+              <label for="answers-covid19" class="mdc-floating-label"></label>
+            </div>
+          </div>
+        </div>
+
+        <input type="hidden" name="answers-support" value="Yes please" />
+      {{else}}
+        <div class="question-block">
+          <div class="question">
+            <h2 class="mdc-typography--headline5 question-title">Would you like a free followup call from SCVO to discuss your result and help plan your next steps? *</h2>
+            {{!-- <div class="mdc-typography--body1 question-description">This could be funding, events, training and 1:1 support</div> --}}
+          </div>
+          <ul class="answer-block">
+            <li class="answer">{{> components_radio_button label="Yes" id="yes" name="answers-support" value="Yes please"}}</li>
+            <li class="answer">{{> components_radio_button label="No" id="no" name="answers-support" value="No thanks"}}</li>
+          </ul>
+        </div>
+      {{/compare ~}}
 
       <div class="question-block">
         <div class="question">
@@ -48,33 +75,6 @@
           </div>
         </div>
       </div>
-
-      {{#compare @root.data.currentSite.name "housing" ~}}
-        <div class="question-block">
-          <div class="question">
-            <h2 class="mdc-typography--headline5 question-title">Due to COVID19 situation – has it made your organisation digitally transform / change the way it performs a specific service or operation / consider changing the way your staff work?</h2>
-          </div>
-          <div class="answer-block">
-            <div class="mdc-text-field mdc-text-field--textarea mdc-text-field--fullwidth" data-mdc-auto-init="MDCTextField">
-              <textarea id="covid19" name="answers-covid19" class="mdc-text-field__input" rows="10" placeholder="Please enter a description" maxlength="32767"></textarea>
-              <label for="answers-covid19" class="mdc-floating-label"></label>
-            </div>
-          </div>
-        </div>
-
-        <input type="hidden" name="answers-support" value="Yes please" />
-      {{else}}
-        <div class="question-block">
-          <div class="question">
-            <h2 class="mdc-typography--headline5 question-title">Would you like additional support from a local infrastructure organisation based on your responses? *</h2>
-            <div class="mdc-typography--body1 question-description">This could be funding, events, training and 1:1 support</div>
-          </div>
-          <ul class="answer-block">
-            <li class="answer">{{> components_radio_button label="Yes please - I'd like support to help put this into action" id="yes" name="answers-support" value="Yes please"}}</li>
-            <li class="answer">{{> components_radio_button label="No thanks!" id="no" name="answers-support" value="No thanks"}}</li>
-          </ul>
-        </div>
-      {{/compare ~}}
 
       <div class="cta b-padding-full">
         <button type="submit" class="mdc-button mdc-button--raised">Submit</button>

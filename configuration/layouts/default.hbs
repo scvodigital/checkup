@@ -11,7 +11,15 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'G-3CKGBLYJ5H');
+      gtag('config', 'G-3CKGBLYJ5H', {
+        'send_page_view': true,
+        'anonymize_ip': true,
+        'cookieDomain': 'none',
+        'custom_map': {
+          'dimension1': 'hit_type',
+          'dimension2': 'parent_document'
+        }
+      });
     </script>
   {{else}}
     {{#compare @root.data.currentSite.name "skills"}}
@@ -22,7 +30,15 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', 'G-ST571H276F');
+        gtag('config', 'G-ST571H276F', {
+          'send_page_view': true,
+          'anonymize_ip': true,
+          'cookieDomain': 'none',
+          'custom_map': {
+            'dimension1': 'hit_type',
+            'dimension2': 'parent_document'
+          }
+        });
       </script>
     {{else}}
       {{#compare @root.data.currentSite.name "cyber"}}
@@ -33,7 +49,15 @@
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
 
-          gtag('config', 'G-JLR4XSMRY2');
+          gtag('config', 'G-JLR4XSMRY2', {
+            'send_page_view': true,
+            'anonymize_ip': true,
+            'cookieDomain': 'none',
+            'custom_map': {
+              'dimension1': 'hit_type',
+              'dimension2': 'parent_document'
+            }
+          });
         </script>
       {{else}}
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3467930-34"></script>

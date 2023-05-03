@@ -3,6 +3,58 @@
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8">
   <base href="/">
+  {{#compare @root.data.currentSite.name "digital"}}
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3CKGBLYJ5H"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-3CKGBLYJ5H');
+    </script>
+  {{else}}
+    {{#compare @root.data.currentSite.name "skills"}}
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-ST571H276F"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-ST571H276F');
+      </script>
+    {{else}}
+      {{#compare @root.data.currentSite.name "cyber"}}
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-JLR4XSMRY2"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-JLR4XSMRY2');
+        </script>
+      {{else}}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3467930-34"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-3467930-34', {
+            'send_page_view': true,
+            'anonymize_ip': true,
+            'cookieDomain': 'none',
+            'custom_map': {
+              'dimension1': 'hit_type',
+              'dimension2': 'parent_document'
+            }
+          });
+        </script>
+      {{/compare}}
+    {{/compare}}
+  {{/compare}}
+
   {{{layoutParts.head}}}
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -59,21 +111,7 @@
   <meta name="theme-color" content="#C2185B">
 
   <!- - <link rel="canonical" href="https://digitalcheckup.com{{request.params.uri.pathname}}" /> -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3467930-34"></script>
   <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-3467930-34', {
-    'send_page_view': true,
-    'anonymize_ip': true,
-    'cookieDomain': 'none',
-    'custom_map': {
-      'dimension1': 'hit_type',
-      'dimension2': 'parent_document'
-    }
-  });
-
   {{#if (contains request.url.hostname ".local") ~}}
   console.log('#### DEBUG MODE ON ####');
   console.log('Request:', {{{regexReplace (regexReplace (stringify request) "(<\/script)" "gi" '</scr\" + \"ipt') "(\r|\n)" "gi" ""}}});

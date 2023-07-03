@@ -61,12 +61,12 @@
   <!- - <link rel="canonical" href="https://digitalcheckup.com{{request.params.uri.pathname}}" /> -->
 
   {{#compare @root.data.currentSite.name "cyber"}}
-    {{>layout-head-tracking-ga tracking_code="G-JLR4XSMRY2"}}
+    {{>layout_head_tracking_ga tracking_code="G-JLR4XSMRY2"}}
   {{else}}
     {{#compare @root.data.currentSite.name "skills"}}
-      {{>layout-head-tracking-ga tracking_code="G-ST571H276F"}}
+      {{>layout_head_tracking_ga tracking_code="G-ST571H276F"}}
     {{else}}
-      {{>layout-head-tracking-ga tracking_code="G-3CKGBLYJ5H"}}
+      {{>layout_head_tracking_ga tracking_code="G-3CKGBLYJ5H"}}
     {{/compare}}
   {{/compare}}
 

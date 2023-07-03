@@ -1,15 +1,6 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id={{tracking_code}}"></script>
 <script>
-  {{#includes @root.data.auth_roles "non_member"}}
-    window.userType = 'non_member';
-  {{else}}
-    {{#includes @root.data.auth_roles "member"}}
-      window.userType = 'member';
-    {{else}}
-      window.userType = 'anonymous';
-    {{/includes}}
-  {{/includes}}
-
+  window.userType = 'anonymous';
   window.dataLayer = window.dataLayer || [];
   function gtag () { dataLayer.push(arguments); }
   gtag('js', new Date());

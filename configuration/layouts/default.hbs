@@ -59,21 +59,18 @@
   <meta name="theme-color" content="#C2185B">
 
   <!- - <link rel="canonical" href="https://digitalcheckup.com{{request.params.uri.pathname}}" /> -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3467930-34"></script>
-  <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-3467930-34', {
-    'send_page_view': true,
-    'anonymize_ip': true,
-    'cookieDomain': 'none',
-    'custom_map': {
-      'dimension1': 'hit_type',
-      'dimension2': 'parent_document'
-    }
-  });
+  
+  {{#compare @root.data.currentSite.name "cyber"}}
+    {{>layout-head-tracking-ga tracking_code="G-JLR4XSMRY2"}}
+  {{else}}
+    {{#compare @root.data.currentSite.name "skills"}}
+      {{>layout-head-tracking-ga tracking_code="G-ST571H276F"}}
+    {{else}}
+      {{>layout-head-tracking-ga tracking_code="G-3CKGBLYJ5H"}}
+    {{/compare}}
+  {{/compare}}
 
+  <script>
   {{#if (contains request.url.hostname ".local") ~}}
   console.log('#### DEBUG MODE ON ####');
   console.log('Request:', {{{regexReplace (regexReplace (stringify request) "(<\/script)" "gi" '</scr\" + \"ipt') "(\r|\n)" "gi" ""}}});

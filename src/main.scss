@@ -192,19 +192,20 @@ footer.mdc-layout__footer {
   height: 40px;
 }
 .scvo-link-bar {
-  background-color: $gray-color-light;
+  background-color: white;
   height: 40px;
   width: 100%;
   ul {
     margin: 0;
     list-style-type: none;
     li {
-      margin: 0;
-      display: inline;
+      // margin: 0;
+      display: inline-block;
+      vertical-align: top;
     }
   }
   .text-link {
-    font-size: 91%;
+    font-size: 98.14%;
     display: inline-block;
     height: 40px;
     line-height: 40px;
@@ -212,21 +213,24 @@ footer.mdc-layout__footer {
     padding: 0 0.4rem;
     color: $secondary-color;
     text-decoration: none;
+    border-radius: 0 0 0.2rem 0.2rem;
   }
   .brand-coronavirus .text-link:hover {
     background-color: $primary-color;
     color: white;
   }
+  .brand-gathering .text-link:hover {
+    background-color: $gathering-color;
+    color: white;
+  }
+  .brand-fundingscotland .text-link.active,
   .brand-fundingscotland .text-link:hover {
     background-color: $fs-color;
     color: white;
   }
+  .brand-goodmoves .text-link.active,
   .brand-goodmoves .text-link:hover {
     background-color: $goodmoves-color;
-    color: white;
-  }
-  .brand-gathering .text-link:hover {
-    background-color: $gathering-color;
     color: white;
   }
   .brand-tfn .text-link:hover {
@@ -244,14 +248,19 @@ footer.mdc-layout__footer {
     line-height: 38px;
     width: 90px;
     padding: 0 0.4rem;
+    border-radius: 0 0 0.2rem 0.2rem;
     img {
       vertical-align: middle;
-      width: 100%;
+      width: 100%
     }
   }
   .brand-scvo .brand-logo:hover img,
   .brand-scvo .brand-logo.active img {
     filter: invert(1) contrast(100);
+  }
+  .brand-scvo.l-margin.r-margin-full {
+    background-color: $gray-color-light;
+    border-radius: 0 0 0.2rem 0.2rem;
   }
 }
 

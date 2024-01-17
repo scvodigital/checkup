@@ -37,18 +37,18 @@
           <div class="mdc-layout-grid__inner">
             <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone">
               <div class="mdc-text-field mdc-text-field--box mdc-ripple-upgraded" data-mdc-auto-init="MDCTextField">
-                <input type="text" id="name" name="answers-name" class="mdc-text-field__input mdc-text-field--fullwidth" value="" data-lpignore="true" autocomplete="off"{{#if @root.request.body.answers-sid}} required{{/if}}>
+                <input type="text" id="name" name="answers-name" class="mdc-text-field__input mdc-text-field--fullwidth required" required value="" data-lpignore="true" autocomplete="off"{{#if @root.request.body.answers-sid}} required{{/if}}>
                 <label class="mdc-floating-label" for="answers-name">
-                  Your name
+                  Your name *
                 </label>
                 <div class="mdc-line-ripple"></div>
               </div>
             </div>
             <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone">
               <div class="mdc-text-field mdc-text-field--box mdc-ripple-upgraded" data-mdc-auto-init="MDCTextField">
-                <input type="text" id="email" name="answers-email" class="mdc-text-field__input mdc-text-field--fullwidth" value="" data-lpignore="true" autocomplete="off">
+                <input type="text" id="email" name="answers-email" class="mdc-text-field__input mdc-text-field--fullwidth required" required value="" data-lpignore="true" autocomplete="off">
                 <label class="mdc-floating-label" for="answers-email">
-                  Email address
+                  Email address *
                 </label>
                 <div class="mdc-line-ripple"></div>
               </div>
@@ -85,9 +85,9 @@
                 <input type="hidden" name="answers-web_organisation" value="{{@root.data.rootResponse.organisation}}" />
                 {{/if ~}}
                 <div class="mdc-text-field mdc-text-field--box mdc-ripple-upgraded{{#if @root.request.body.answers-sid}} mdc-text-field--disabled{{/if}}" data-mdc-auto-init="MDCTextField">
-                  <input type="text" id="web_organisation" name="answers-web_organisation" class="mdc-text-field__input mdc-text-field--fullwidth" data-lpignore="true" autocomplete="off"{{#if @root.request.body.answers-sid}} disabled value="{{@root.data.rootResponse.organisation}}" {{else}} value="" {{/if}}/>
+                  <input type="text" id="web_organisation" name="answers-web_organisation" class="mdc-text-field__input mdc-text-field--fullwidth required" required data-lpignore="true" autocomplete="off"{{#if @root.request.body.answers-sid}} disabled value="{{@root.data.rootResponse.organisation}}" {{else}} value="" {{/if}}/>
                   <label class="mdc-floating-label" for="answers-web_organisation">
-                    Your organisation name
+                    Your organisation name *
                   </label>
                   <div class="mdc-line-ripple"></div>
                 </div>

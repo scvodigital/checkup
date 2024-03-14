@@ -16,7 +16,9 @@
     "governance.checkup.scot",
     "checkup-governance.local",
     "skills.checkup.scot",
-    "checkup-skills.local"
+    "checkup-skills.local",
+    "clacks.skills.checkup.scot",
+    "checkup-skills-clacks.local"
   ],
   "routes": [
     "{:./routes/*.json}"
@@ -33,7 +35,8 @@
       "housing": "{:./data/sites/housing.json}",
       "cyber": "{:./data/sites/cyber.json}",
       "governance": "{:./data/sites/governance.json}",
-      "skills": "{:./data/sites/skills.json}"
+      "skills": "{:./data/sites/skills.json}",
+      "skills-clacks": "{:./data/sites/skills-clacks.json}"
     },
     "areas": "{:./data/areas.json}",
     "elasticsearchUrl": "{$./data/elasticsearch-legacy-url.txt}",

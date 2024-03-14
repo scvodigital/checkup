@@ -183,13 +183,20 @@
                       {{#compare @root.data.currentSite.name "skills"}}
                         Essential Digital Skills
                       {{else}}
-                        {{#compare @root.data.currentSite.type "organisation"}}
-                           <span class="text-brand">Digital</span> Checkup
-                          {{#unless (compare @root.data.currentSite.name "digital")}}
+                        {{#compare @root.data.currentSite.name "skills-clacks"}}
+                          Essential Digital Skills
                             <span class="mdc-typography--caption">
-                              For {{@root.data.currentSite.for_plural}}
+                              For Clackmannanshire
                             </span>
-                          {{/unless}}
+                        {{else}}
+                          {{#compare @root.data.currentSite.type "organisation"}}
+                            <span class="text-brand">Digital</span> Checkup
+                            {{#unless (compare @root.data.currentSite.name "digital")}}
+                              <span class="mdc-typography--caption">
+                                For {{@root.data.currentSite.for_plural}}
+                              </span>
+                            {{/unless}}
+                          {{/compare}}
                         {{/compare}}
                       {{/compare}}
                     {{/compare}}

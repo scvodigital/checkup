@@ -18,6 +18,7 @@
     "skills.checkup.scot",
     "checkup-skills.local",
     "clacks.skills.checkup.scot",
+    "clacks-skills.checkup.scot",
     "checkup-skills-clacks.local"
   ],
   "routes": [

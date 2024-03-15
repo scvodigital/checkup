@@ -63,11 +63,11 @@
   {{#compare @root.data.currentSite.name "cyber"}}
     {{>layout_head_tracking_ga tracking_code="G-JLR4XSMRY2"}}
   {{else}}
-    {{#compare @root.data.currentSite.name "skills"}}
+    {{#ifAny (compare @root.data.currentSite.name "skills") (compare @root.data.currentSite.name "skills-clacks")}}
       {{>layout_head_tracking_ga tracking_code="G-ST571H276F"}}
     {{else}}
       {{>layout_head_tracking_ga tracking_code="G-3CKGBLYJ5H"}}
-    {{/compare}}
+    {{/ifAny}}
   {{/compare}}
 
   <script>

@@ -1,4 +1,4 @@
-{{#compare @root.data.currentSite.name "skills"}}
+{{#ifAny (compare @root.data.currentSite.name "skills") (compare @root.data.currentSite.name "skills-clacks")}}
   <div class="checkup-section-header header-primary">
     <div class="container-fluid">
       <div class="container-content v-padding-full">
@@ -79,4 +79,4 @@
   </div>
 {{/compare}}
 {{/compare}}
-{{/compare}}
+{{/ifAny}}

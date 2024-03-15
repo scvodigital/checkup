@@ -18,17 +18,17 @@
           }
         },
         {{/compare}}
-        {{#compare @root.data.currentSite.name "skills"}}
+        {{#ifAny (compare @root.data.currentSite.name "skills") (compare @root.data.currentSite.name "skills-clacks")}}
         {
           "term": {
             "post_tags_slug": "essential-digital-skills"
           }
         },
-        {{/compare}}
+        {{/ifAny}}
         {
           "terms": {
             "post_tags_slug": [
-              {{#compare @root.data.currentSite.name "skills"}}
+              {{#ifAny (compare @root.data.currentSite.name "skills") (compare @root.data.currentSite.name "skills-clacks")}}
               "foundation-skills",
               "communicating",
               "transacting",
@@ -45,7 +45,7 @@
               "leadership",
               "culture",
               "skills"
-              {{/compare}}
+              {{/ifAny}}
             ]
           }
         }

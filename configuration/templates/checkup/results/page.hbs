@@ -178,7 +178,7 @@
 
                       {{#unless (any @root.data.results.overall.additionalResponses) ~}}
                         {{#if @root.request.params.query.rid ~}}
-                          {{#unless (compare @root.data.currentSite.name "skills")}}
+                          {{#unless (regexMatch @root.data.currentSite.name '^skills(-clacks)?' 'i')}}
                             <div class="cta v-padding-full">
                               <div class="mdc-text-field mdc-text-field--with-trailing-icon">
                                 <input type="text" id="share-url" class="mdc-text-field__input" value="https://{{@root.request.url.host}}/{{@root.data.currentCheckup}}?sid={{@root.request.params.query.rid}}{{#if @root.data.rootResponse.referredby}}&utm_campaign={{@root.data.rootResponse.referredby}}{{/if}}" readonly>
@@ -327,7 +327,7 @@
       {{/ifAny}}
 
       {{#compare @root.data.supplimentaryResponses.resources_relevant.hits.total ">" 0 ~}}
-      <div class="brand-scheme-{{#compare @root.data.currentSite.name 'skills'}}default{{else}}legacy{{/compare}}">
+      <div class="brand-scheme-{{#if (regexMatch @root.data.currentSite.name '^skills(-clacks)?' 'i')}}default{{else}}legacy{{/if}}">
         <div class="checkup-topic-header t-margin-full" id="resources">
           <div class="container-fluid">
             <div class="container-content">

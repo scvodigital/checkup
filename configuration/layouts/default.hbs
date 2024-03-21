@@ -185,9 +185,9 @@
                       {{else}}
                         {{#compare @root.data.currentSite.name "skills-clacks"}}
                           Essential Digital Skills
-                            <span class="mdc-typography--caption">
-                              For Clackmannanshire Council
-                            </span>
+                          <span class="mdc-typography--caption">
+                            For Clackmannanshire Council
+                          </span>
                         {{else}}
                           {{#compare @root.data.currentSite.type "organisation"}}
                             <span class="text-brand">Digital</span> Checkup
@@ -311,6 +311,13 @@
                   <p>
                     {{@root.data.currentSite.title}} is {{#unless (compare @root.data.currentSite.name "root")}}a <a href="https://checkup.scot">Checkup</a>{{/unless}} run by the <a href="https://scvo.scot">Scottish Council for Voluntary Organisations</a>{{#if @root.data.currentSite.partner}} in partnership with the <a href="{{@root.data.currentSite.partner.url}}">{{@root.data.currentSite.partner.title}}</a>{{/if}}. <a href="/about" aria-label="Find out more about {{@root.data.currentSite.title}}">Find out more</a>
                   </p>
+                  {{#compare @root.data.currentSite.name "skills-clacks"}}
+                    <p>
+                      <a href="https://clacks.gov.uk" target="_blank">
+                        <img src="{{~>asset_url url='images/logos/clacks-w-gaelic.png'~}}" style="max-width: 100%;" class="v-margin-full" alt="for Clackmannanshire Council | Comhairle Siorrachd Chlach Mhanann">
+                      </a>
+                    </p>
+                  {{/compare}}
                 </div>
               </div>
             </div>
